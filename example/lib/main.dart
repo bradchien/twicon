@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  MyHomePage({Key? key, this.title}) : super(key: key);
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -26,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     var items = Item.all;
     return Scaffold(
-        appBar: AppBar(title: Text(widget.title)),
+        appBar: AppBar(title: Text(widget.title!)),
         body: Scrollbar(
           child: Container(
               color: Colors.black26,
@@ -57,11 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class IconCard extends StatelessWidget {
-  const IconCard({Key key, @required this.item, @required this.index})
-      : super(key: key);
+  const IconCard({Key? key, this.item, this.index}) : super(key: key);
 
-  final Item item;
-  final int index;
+  final Item? item;
+  final int? index;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -69,13 +68,13 @@ class IconCard extends StatelessWidget {
           onTap: () => showDialog(
               context: context,
               builder: (context) => SimpleDialog(
-                    title: Text('${index + 1} - ${item.title}'),
+                    title: Text('${index! + 1} - ${item!.title}'),
                     contentPadding: const EdgeInsets.all(20),
                     children: <Widget>[
                       Container(
                         width: 240,
                         height: 240,
-                        child: Icon(item.icon, size: 200, color: Colors.black),
+                        child: Icon(item!.icon, size: 200, color: Colors.black),
                       ),
                       SizedBox(width: 10),
                       RaisedButton(
@@ -91,10 +90,10 @@ class IconCard extends StatelessWidget {
               Container(
                 width: 140,
                 height: 140,
-                child: Icon(item.icon, size: 100, color: Colors.black),
+                child: Icon(item!.icon, size: 100, color: Colors.black),
               ),
               SizedBox(width: 10),
-              Flexible(child: Text('${index + 1} - ${item.title}')),
+              Flexible(child: Text('${index! + 1} - ${item!.title}')),
             ],
           ),
         ),
